@@ -27,7 +27,8 @@ $func->assignVars(array(
 			'style' => $func->get_settings('style')->value,
 			'steam' => $func->get_settings('steam')->value,
 			'preview' => $func->get_settings('preview')->value,
-			'rank' => $func->get_settings('rank')->value
+			'rank' => $func->get_settings('rank')->value,
+			'cURL' => $func->get_settings('cURL')->value
 ));
 
 
@@ -46,12 +47,14 @@ if(isset($_GET['page'])) {
 			$rank = $_POST['rank'];
 			$steam = isset($_POST['steam']);
 			$preview = isset($_POST['preview']);
+			$cURL = isset($_POST['cURL']);
 
 			//updateovanje podesavanja u bazi podataka
 			$func->updateSettings($func->get_settings('style')->id, $style);
 			$func->updateSettings($func->get_settings('rank')->id, $rank);
 			$func->updateSettings($func->get_settings('steam')->id, $steam);
 			$func->updateSettings($func->get_settings('preview')->id, $preview);
+			$func->updateSettings($func->get_settings('cURL')->id, $cURL);
 
 			header('Location: admin.php?page=settings');
 		}

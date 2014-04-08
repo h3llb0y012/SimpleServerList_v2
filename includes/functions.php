@@ -88,14 +88,30 @@ class functions {
 		return false;
 	}
 
-	public function json_decode_bre($ip) {
+	public function url_get_contents($ip) {
 		$link = "http://api.gametracker.rs/demo/json/server_info/" . $ip;
-		$link = @file_get_contents($link);
 
+		$return = "";
+
+		if ($this->get_settings('cURL')->value == 1) {
+			$curl = curl_init();
+
+			curl_setopt($curl, CURLOPT_URL, $link);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			$return = curl_exec($curl);
+
+		} else
+			$return = @file_get_contents($link);
+
+		return $return;
+	}
+
+	public function json_decode_bre($link) {
 		$json = json_decode($link, true);
 
 		return $json;
 	}
+
 }
 
 ?>

@@ -70,6 +70,10 @@ $(document).ready(function(){
 					?>
 
 					</select>
+
+					<h3>Uzimaj podatke sa GameTracker-a preko cURL-a:</h3>
+					<input type="checkbox" name="cURL" value="1" <?php if($this->get('cURL') == 1) echo 'checked'; ?>/>
+
 					<h3>Prikazi steam ikonicu:</h3>
 					<input type="checkbox" name="steam" value="1" <?php if ($this->get('steam') == 1) echo 'checked'; ?>/>
 					

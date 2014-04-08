@@ -13,7 +13,8 @@
 	    	<?php
 
 	    	foreach ($this->get('serveri') as $server) {
-	    		$data = $func->json_decode_bre($server->ip);
+	    		$data = $func->url_get_contents($server->ip);
+	    		$data = $func->json_decode_bre($data);
 	    		$steam = $this->get('steam') ? '<td></td>' : '';
 
 	    		if ($data['apiError'] == 1)
