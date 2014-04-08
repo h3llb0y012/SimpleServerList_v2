@@ -11,7 +11,7 @@ if ($db->rowCount("SELECT COUNT(*) FROM `serveri` WHERE `id` = '$id'") == 0)
 	exit('<strong>Server nije pronadjen u databazi!</strong>');
 
 $get_server = $db->get('serveri', array('id', '=', $id))->first();
-$server = $func->json_decode_bre($get_server->ip);
+$server = $func->json_decode_bre($func->url_get_contents($get_server->ip));
 
 if ($server['apiError'] == 1)
 	exit('<strong>' . $server['errorText'] . '</strong>');
